@@ -1,35 +1,33 @@
+/* The image container*/
 .flex_position {
-  display: flex; 
-  /* flex-direction: column; */
-  
+  display: flex;  
   justify-content: center;
   width: 100%;
   height: 100%;
   background-color: #2f6c81;  
-  /* margin: 0 5%; */
 }
-
+/* The image at top*/
 img {
   
   width: 70%;
   height: 60vh;
 }
-
+/* Container for the cards them self*/
 .cards-container {
   background-color: #2f6c81;  
   display: flex;
   flex-direction: row;
   justify-content:center;
   gap: 1rem;
-  /* margin: 1rem 5%; */
 }
-
+/* Schematics for the cards them selves */
 .cards {
   border-radius: 12%;
   width: 15%;
   height: 35vh;
   
 }
+/*Color the cards their designated colors */
 #red{
   background-color: red;
 }
@@ -39,19 +37,20 @@ img {
 #yellow{
   background-color: goldenrod;
 }
-
+/*Additional cards characteristics for flex layout */
 .cards-container > .cards{
     flex-direction:column; 
     align-content:center;
     align-items: center;
 }
+/*The unordered list inside the cards */
 ul{
     height:50%;
     margin-bottom:30%;
     padding-top:10%;
-    /* margin-top:15%; */
     background-color:white;
 }
+/*The heading inside the cards */
 h1{
   
   height:5%;
@@ -60,4 +59,35 @@ h1{
 }
 
 
-/* 770px width or 510 height media query */
+/* 770px size every thing changes and flex-wrap wraps cards evenly*/
+@media (width <= 770px) {
+  .cards-container{
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .cards {
+  width: 136px;
+  height: 195px;
+  
+}
+
+}
+/* Adjust the image as it gets smaller*/
+@media (width <= 430px){
+  img{
+    width:220px;
+    
+  }
+/*Keep the screen that size even if it goes smaller */
+@media (width <= 263px){
+  .flex_position{
+    width: 263px;
+  }
+  .cards-container{
+    width: 263px;
+  }
+}
+/*TODO: find out why the screen size smaller than 263 stacks up cards as a column in dev console mode but does not when restoring it naturally without console mode */
+}
