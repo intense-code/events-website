@@ -5,7 +5,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: rgb(129, 143, 207);  
+  background-color: #2f6c81;  
   /* margin: 0 5%; */
 }
 
@@ -16,11 +16,10 @@ img {
 }
 
 .cards-container {
-  background-color: rgb(129, 143, 207);  
+  background-color: #2f6c81;  
   display: flex;
   flex-direction: row;
   justify-content:center;
-  flex-wrap: wrap; /* Optional: wrap cards on smaller screens */
   gap: 1rem;
   /* margin: 1rem 5%; */
 }
@@ -29,8 +28,16 @@ img {
   border-radius: 12%;
   width: 15%;
   height: 35vh;
-  border: 1px solid black;
+  
+}
+#red{
   background-color: red;
+}
+#blue{
+  background-color:aqua;
+}
+#yellow{
+  background-color: goldenrod;
 }
 
 .cards-container > .cards{
@@ -43,7 +50,6 @@ ul{
     margin-bottom:30%;
     padding-top:10%;
     /* margin-top:15%; */
-    border:1px, solid, black;
     background-color:white;
 }
 h1{
@@ -52,3 +58,6 @@ h1{
   color:white;
   text-align:center;
 }
+
+
+/* 770px width or 510 height media query */
