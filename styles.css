@@ -99,7 +99,7 @@ body {
   pointer-events: auto;
 }
 
-/* Menu items */
+/* Menu on NAV items */
 .menu li {
   padding: 0.35rem 0;
   transition: font-weight 0.18s ease, transform 0.18s ease;
@@ -141,6 +141,40 @@ body {
   color: #f2f6f8;
 }
 
+a {
+  text-decoration: none;
+}
+
+/* Basic table styling */
+table {
+  width: 100%; /* Adjust as needed */
+  border-collapse: collapse; /* Collapses borders into a single line */
+}
+
+/* Header styling */
+th {
+  background-color:  var(--bg);; /* Light gray background */
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid  var(--bg);; /* Separator line */
+}
+
+/* Data cell styling */
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid  var(--bg);;
+}
+
+/* Hover effect on rows */
+tr:hover {
+  background-color:  var(--bg);;
+}
+
+/* Zebra striping (alternating row colors) */
+tr:nth-child(even) {
+  background-color:  var(--bg);;
+}
 /* ===== Responsive tweaks ===== */
 @media (max-width: 770px) {
   .card { width: 12.5rem; height: 11.5rem; }
