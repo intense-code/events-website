@@ -1,93 +1,158 @@
-/* The image container*/
-.flex_position {
-  display: flex;  
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: #2f6c81;  
+/* ===== Base ===== */
+:root { --bg: #2f6c81; }
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { overflow-y: scroll; }             /* avoid scrollbar flicker "movement" */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: #fff;
 }
-/* The image at top*/
-img {
-  
-  width: 70%;
-  height: 60vh;
-}
-/* Container for the cards them self*/
-.cards-container {
-  background-color: #2f6c81;  
+
+/* ===== Hero (header + logo) ===== */
+.hero { background: var(--bg); }
+
+.hero__img-wrap {
   display: flex;
-  flex-direction: row;
-  justify-content:center;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+.hero__img-wrap img {
+  width: min(60%, 680px);
+  height: 20vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== Cards ===== */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-}
-/* Schematics for the cards them selves */
-.cards {
-  border-radius: 12%;
-  width: 15%;
-  height: 35vh;
-  
-}
-/*Color the cards their designated colors */
-#red{
-  background-color: red;
-}
-#blue{
-  background-color:aqua;
-}
-#yellow{
-  background-color: goldenrod;
-}
-/*Additional cards characteristics for flex layout */
-.cards-container > .cards{
-    flex-direction:column; 
-    align-content:center;
-    align-items: center;
-}
-/*The unordered list inside the cards */
-ul{
-    height:50%;
-    margin-bottom:30%;
-    padding-top:10%;
-    background-color:white;
-}
-/*The heading inside the cards */
-h1{
-  
-  height:5%;
-  color:white;
-  text-align:center;
+  justify-content: center;
+  align-items: flex-start;               /* keep rows steady */
+  padding: 1rem 1rem 2rem;
+  background: var(--bg);
 }
 
-
-/* 770px size every thing changes and flex-wrap wraps cards evenly*/
-@media (width <= 770px) {
-  .cards-container{
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  .cards {
-  width: 136px;
-  height: 195px;
-  
+.card {
+  position: relative;                    /* for absolute menu */
+  width: 15rem;
+  height: 4rem;                        
+  border-radius: 12px;
+  overflow: visible;                     /* allow scaled card to "bleed" */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;           /* title at top */
+  transform-origin: top center;          /* grow downward mostly */
+  transition: transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
+  will-change: transform;
+  padding-top: 0.75rem;
 }
 
+.card h1 {
+  margin: 0.25rem 0 0;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  text-align: center;
 }
-/* Adjust the image as it gets smaller*/
-@media (width <= 430px){
-  img{
-    width:220px;
-    
-  }
-/*Keep the screen that size even if it goes smaller */
-@media (width <= 263px){
-  .flex_position{
-    width: 263px;
-  }
-  .cards-container{
-    width: 263px;
-  }
+/* The stable "slot" that reserves max height for every card */
+.card-slot {
+  width: 15rem;
+  height: 12rem;               /* layout is locked to this height */
+  border-radius: 12px;
+  position: relative;
 }
-/*TODO: find out why the screen size smaller than 263 stacks up cards as a column in dev console mode but does not when restoring it naturally without console mode */
+/* Hover: visually larger, but layout unchanged */
+.card:hover,
+.card:focus-within {
+  height: 12rem;
+  transform: scale(1.08);                /* "resize" without layout shift */
+  filter: brightness(1.03);
+  z-index: 2;                             /* float above neighbors while scaled */
+  box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.15);
+}
+
+/* Menu overlay: not in normal flow, so no white line or push-down */
+.card .menu {
+  position: absolute;
+  left: 0;
+  top: 3.25rem;                          /* below the title */
+  width: 100%;
+  margin: 0;
+  padding: 0.75rem 1rem 1.25rem;
+  list-style: none;
+  background: #ffffff;
+  color: #222;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Show on hover/focus */
+.card:hover .menu,
+.card:focus-within .menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Menu items */
+.menu li {
+  padding: 0.35rem 0;
+  transition: font-weight 0.18s ease, transform 0.18s ease;
+}
+.menu li:hover {
+  font-weight: 700;
+  transform: translateX(2px);
+}
+
+/* Color variants (use classes, not duplicate IDs) */
+.red    { background: #d63b3b; }
+.blue   { background: #1fd4e6; color: #052a2f; }
+.yellow { background: goldenrod; color: #2a1d00; }
+
+/* ===== Content ===== */
+.content {
+  background: var(--bg);
+  padding: 2rem 1rem 4rem;
+}
+
+.intro h1 {
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+.intro h2 {
+  font-size: clamp(1.25rem, 3.5vw, 2rem);
+  margin: 0.5rem 0 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+.intro h2 span { font-weight: 500; }
+
+.intro p {
+  max-width: 70ch;
+  margin: 0.75rem auto;
+  line-height: 1.6;
+  color: #f2f6f8;
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 770px) {
+  .card { width: 12.5rem; height: 11.5rem; }
+}
+
+@media (max-width: 430px) {
+  .hero__img-wrap img { width: 220px; height: 18vh; }
+  .card { width: 11rem; height: 11rem; }
+}
+
+/* Motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .card .menu { transition: none; }
 }
