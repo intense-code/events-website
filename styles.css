@@ -274,8 +274,17 @@
       width:60%;
       height:100%;
     }
-    .form-group{
+    div.form-group{
       display:flex;
       justify-content: center;
       flex-direction: column;
+    }
+
+    article.indexMain{
+      width:100%;
+      margin-left:50%;
+    }
+    .indexMain{
+      display:flex;
+      flex-direction: row;
     }
