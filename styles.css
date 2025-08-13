@@ -95,7 +95,8 @@
       font-weight: bold;
       white-space: nowrap;
     }
-    tbody tr:hover { background-color: black; } 
+    tbody tr:hover { background-color: black; }
+    tbody tr:nth-child(even) { background-color: #123845; }
 
     /* ===== Category Label Styling ===== */
     .category-label {
@@ -133,7 +134,136 @@
       display: flex;
       flex-direction: column;
       text-align:center;
-      align-items:center;
+
       width:70%;
     }
     
+    /* ===== Hero (header + logo) ===== */
+    .hero { background: var(--bg); }
+    .hero__img-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 0;
+    }
+    .hero__img-wrap img {
+      width: min(60%, 680px);
+      height: 20vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== Cards Navbar ===== */
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1rem 1rem 2rem;
+      background: var(--bg);
+    }
+    .card {
+      position: relative;
+      width: 15rem;
+      height: 4rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      transform-origin: top center;
+      transition: transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
+      padding-top: 0.75rem;
+    }
+    .card h1 { margin: 0.25rem 0 0; font-size: 1.4rem; text-align: center; }
+    .card-slot { width: 15rem; height: 12rem; border-radius: 12px; position: relative; }
+    .card:hover { height: 12rem; transform: scale(1.08); filter: brightness(1.03); z-index: 2; box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.15); }
+    .card .menu {
+      position: absolute; left: 0; top: 3.25rem; width: 100%;
+      margin: 0; padding: 0.75rem 1rem 1.25rem;
+      list-style: none; background: #fff; color: #222;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+    }
+    .card:hover .menu { opacity: 1; pointer-events: auto; }
+    .menu li { padding: 0.35rem 0; transition: font-weight 0.18s ease, transform 0.18s ease; }
+    .menu li:hover { font-weight: 700; transform: translateX(2px); }
+    .red { background: #d63b3b; }
+    .blue { background: #1fd4e6; color: #052a2f; }
+    .yellow { background: goldenrod; color: #2a1d00; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== Intro (optional) ===== */
+    .intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: .35rem;
+      padding: 0 1rem 1rem;
+    }
+    .intro h1 { margin: .25rem 0 0; font-size: clamp(1.75rem, 4vw, 2.5rem); }
+    .intro p { max-width: 70ch; color: #e6f3f7; margin: 0; }
+
+    /* ===== Locations layout (scoped, won’t affect your other pages) ===== */
+    .locations {
+      padding: 1rem 1rem 2rem;
+    }
+    .loc-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+    #map {
+      width: 100%;
+      min-height: 60vh;
+      height: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .sidebar {
+      background: #0f2730;
+      border-radius: 12px;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      max-height: 70vh;
+      overflow: auto;
+    }
+    .search {
+      display: flex; gap: .5rem;
+    }
+    .search input {
+      flex: 1; padding: .6rem .8rem; border-radius: .6rem;
+      border: none; outline: none;
+    }
+    .search button {
+      padding: .6rem .9rem; border-radius: .6rem; border: none;
+      background: #1fd4e6; color: #052a2f; font-weight: 700; cursor: pointer;
+    }
+    .list { display: grid; gap: .6rem; }
+    .card-item {
+      background: #123845;
+      border-radius: .8rem;
+      padding: .75rem .9rem;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      text-align: left; cursor: pointer;
+    }
+    .card-item:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.25); }
+    .card-item h3 { margin: 0 0 .25rem 0; font-size: 1rem; }
+    .card-item p { margin: 0; color: #cfe7ef; font-size: .9rem; line-height: 1.35; }
+    .pill {
+      display: inline-block; font-size: .75rem; padding: .15rem .5rem;
+      border-radius: 999px; margin-top: .35rem; background: #1fd4e6; color: #052a2f; font-weight: 700;
+    }
+
+    @media (max-width: 860px) {
+      .loc-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 45vh 1fr;
+      }
+      #map { min-height: 45vh; }
+    }
