@@ -348,3 +348,11 @@ section.secd{
 .form-class{
     justify-content: space-between;
 }
+.green{
+  font-size: 120%;
+  color:green;
+}
+.yell{
+  font-size:130%;
+  color:yellow;
+}
