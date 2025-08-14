@@ -278,8 +278,17 @@
       display:flex;
       justify-content: center;
       flex-direction: column;
+      font-size:28px;
     }
-
+    div.form-group:hover{
+      font-weight:bold;
+      color:green;
+      transform: scale(1.08); filter: brightness(1.03); z-index: 2; box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.15);
+    }
+    div.form-group input:hover{
+      border-color: yellow;
+    }
+ 
     article.indexMain{
       width:100%;
       margin-left:50%;
@@ -288,3 +297,54 @@
       display:flex;
       flex-direction: row;
     }
+    .submit{
+      width:100%;
+      text-align: center;
+      font-size: 28px;
+    }
+    .submit:hover{
+      background: green;
+    }
+   /* ——— Form container ——— */
+.form-class{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 1rem;                /* so content isn’t glued to the border */
+  border: 3px solid #000;       /* <-- correct syntax */
+  border-radius: 12px;
+  background: #0f2730;
+}
+
+section.secd{
+  display:flex;
+  justify-content: space-around;
+  justify-self: center;
+  width:80%;
+}
+/* (Optional) if you need the border on .secd too */
+.secd{
+  width:50%;
+  height:100%;
+  border: 2px solid #000;       /* not just border-color */
+}
+
+/* Inputs: give them a base border so :hover color changes are visible */
+.form-group input,
+.form-group textarea,
+.form-group select{
+  padding: .6rem .8rem;
+  border: 2px solid #455a64;
+  border-radius: .6rem;
+  background: #0b2230;
+  color: #e6f3f7;
+}
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover{
+  border-color: yellow;
+}
+.form-class{
+    justify-content: space-between;
+}
