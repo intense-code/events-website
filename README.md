@@ -1,2 +1,2 @@
 # events-website
-HTML CSS Assignment to copy events website png
+https://event-website-code-temple.netlify.app/location
